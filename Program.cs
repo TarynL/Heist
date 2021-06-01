@@ -12,6 +12,13 @@ namespace Heist
             int BankDifficultyLevel = 100;
             int TeamSkillLevel = 0;
 
+            static int GetHeistLuckValue()
+            {
+                Random random = new Random();
+                return random.Next(-10, 10);
+            }
+            BankDifficultyLevel += GetHeistLuckValue();
+
             List<TeamMember> TeamMemberList = new List<TeamMember>();
 
             while (NameCheck)
@@ -58,7 +65,7 @@ namespace Heist
             {
                 FirstName = "Taryn",
                 LastName = "Lytle",
-                SkillLevel = 15,
+                SkillLevel = 25,
                 CourageFactor = 1.9
             };
             TeamMember Colten = new TeamMember()
@@ -79,18 +86,25 @@ namespace Heist
                 TeamSkillLevel += member.SkillLevel;
             }
 
+            Console.WriteLine($"There are {TeamMemberList.Count} members on the team! \n");
+
+            Console.WriteLine($"The teams skill level is {TeamSkillLevel}");
+            Console.WriteLine($"The bank difficulty level is {BankDifficultyLevel} \n");
+
             if (TeamSkillLevel >= BankDifficultyLevel)
             {
+                Console.WriteLine("$$$$$$$$");
                 Console.WriteLine("We are rich!");
+                Console.WriteLine("$$$$$$$$");
             }
             else
             {
+                Console.WriteLine("~~~0~~~0~~~0~~~0~~~");
                 Console.WriteLine("We are poor!");
+                Console.WriteLine("~~~0~~~0~~~0~~~0~~~");
             }
 
-            Console.WriteLine($"The teams skill level is {TeamSkillLevel}");
 
-            Console.WriteLine($"There are {TeamMemberList.Count} members on the team!");
 
 
 
