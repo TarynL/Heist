@@ -10,6 +10,9 @@ namespace Heist
             Console.WriteLine("Plan Your Heist!");
             bool NameCheck = true;
             int TeamSkillLevel = 0;
+            int HeistWins = 0;
+            int HeistFails = 0;
+
             List<TeamMember> TeamMemberList = new List<TeamMember>();
             Console.Write("What bank level would you like to heist between 50-100: ");
             int BankDifficultyLevel = int.Parse(Console.ReadLine());
@@ -73,14 +76,17 @@ namespace Heist
             TeamMemberList.Add(Laurel);
             TeamMemberList.Add(Taryn);
             TeamMemberList.Add(Colten);
+            Console.WriteLine($"There are {TeamMemberList.Count} members on the team! \n");
+
 
             foreach (TeamMember member in TeamMemberList)
             {
                 TeamSkillLevel += member.SkillLevel;
             }
 
-            Console.WriteLine("How many heists would you like to run?");
+            Console.Write("How many heists would you like to run? ");
             int TrialRuns = int.Parse(Console.ReadLine());
+
 
             for (int i = 0; i < TrialRuns; i++)
             {
@@ -92,23 +98,29 @@ namespace Heist
 
                 BankDifficultyLevel += GetHeistLuckValue();
 
-                Console.WriteLine($"There are {TeamMemberList.Count} members on the team! \n");
-                Console.WriteLine($"The teams skill level is {TeamSkillLevel}");
-                Console.WriteLine($"The bank difficulty level is {BankDifficultyLevel} \n");
+                Console.WriteLine($"\nThe teams skill level is {TeamSkillLevel}");
+                Console.WriteLine($"The bank difficulty level is {BankDifficultyLevel} ");
 
                 if (TeamSkillLevel >= BankDifficultyLevel)
                 {
                     Console.WriteLine("$$$$$$$$");
                     Console.WriteLine("We are rich!");
-                    Console.WriteLine("$$$$$$$$");
+                    Console.WriteLine("$$$$$$$$ \n");
+                    HeistWins++;
                 }
                 else
                 {
                     Console.WriteLine("~~~0~~~0~~~0~~~0~~~");
                     Console.WriteLine("We are poor!");
-                    Console.WriteLine("~~~0~~~0~~~0~~~0~~~");
+                    Console.WriteLine("~~~0~~~0~~~0~~~0~~~\n");
+                    HeistFails++;
                 }
+
+
             }
+            Console.WriteLine($"Your Heist Trial Score: {HeistWins} wins, {HeistFails} fails");
+
+
         }
     }
 }
