@@ -25,6 +25,7 @@ namespace Heist
 
             };
 
+            Console.WriteLine($"Name: {Colten.FullName()} \nSkill Level: {Colten.SkillLevel} \nCourage Factor: {Colten.CourageFactor}");
 
 
         }
