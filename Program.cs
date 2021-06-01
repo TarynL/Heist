@@ -10,9 +10,9 @@ namespace Heist
             Console.WriteLine("Plan Your Heist!");
             bool NameCheck = true;
             int TeamSkillLevel = 0;
-
             List<TeamMember> TeamMemberList = new List<TeamMember>();
-
+            Console.Write("What bank level would you like to heist between 50-100: ");
+            int BankDifficultyLevel = int.Parse(Console.ReadLine());
             while (NameCheck)
             {
 
@@ -84,8 +84,6 @@ namespace Heist
 
             for (int i = 0; i < TrialRuns; i++)
             {
-                int BankDifficultyLevel = 100;
-
                 static int GetHeistLuckValue()
                 {
                     Random random = new Random();
