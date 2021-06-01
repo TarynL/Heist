@@ -9,6 +9,8 @@ namespace Heist
         {
             Console.WriteLine("Plan Your Heist!");
             bool NameCheck = true;
+            int BankDifficultyLevel = 100;
+            int TeamSkillLevel = 0;
 
             List<TeamMember> TeamMemberList = new List<TeamMember>();
 
@@ -49,31 +51,44 @@ namespace Heist
             {
                 FirstName = "Laurel",
                 LastName = "Morrison",
-                SkillLevel = 123,
-                CourageFactor = 1.2
+                SkillLevel = 25,
+                CourageFactor = 1.9
             };
             TeamMember Taryn = new TeamMember()
             {
                 FirstName = "Taryn",
                 LastName = "Lytle",
-                SkillLevel = 675,
+                SkillLevel = 15,
                 CourageFactor = 1.9
+            };
+            TeamMember Colten = new TeamMember()
+            {
+                FirstName = "Colten",
+                LastName = "Mayberry",
+                SkillLevel = 25,
+                CourageFactor = 2.0
             };
 
             TeamMemberList.Add(Laurel);
             TeamMemberList.Add(Taryn);
+            TeamMemberList.Add(Colten);
+
 
             foreach (TeamMember member in TeamMemberList)
             {
-                Console.WriteLine("~~~~~~~~~~~");
-                Console.WriteLine($"Name: {member.FullName()}");
-                Console.WriteLine($"Skill Level: {member.SkillLevel}");
-                Console.WriteLine($"Courage Factor: {member.CourageFactor}");
-                Console.WriteLine("~~~~~~~~~~~");
-
-
-
+                TeamSkillLevel += member.SkillLevel;
             }
+
+            if (TeamSkillLevel >= BankDifficultyLevel)
+            {
+                Console.WriteLine("We are rich!");
+            }
+            else
+            {
+                Console.WriteLine("We are poor!");
+            }
+
+            Console.WriteLine($"The teams skill level is {TeamSkillLevel}");
 
             Console.WriteLine($"There are {TeamMemberList.Count} members on the team!");
 
