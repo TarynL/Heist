@@ -14,6 +14,7 @@ namespace Heist
             int TeamSkillLevel = 0;
             int HeistWins = 0;
             int HeistFails = 0;
+            string RandomCodeName = "";
 
             List<TeamMember> TeamMemberList = new List<TeamMember>();
             Console.Write("What bank level would you like to heist between 50-100: ");
@@ -39,45 +40,32 @@ namespace Heist
                 Console.Write("Please enter a courage factor between 0.0-2.0: ");
                 double MemberCourageFactor = double.Parse(Console.ReadLine());
 
+                CodeNames TeamCodeNames = new CodeNames();
+                List<int> indexes = new List<int>();
+
+                Random r = new Random();
+
+                int MemberCodeNameIndex = r.Next(TeamCodeNames.CodeNamesList.Count);
+
+                if (!indexes.Contains(MemberCodeNameIndex))
+                {
+                    indexes.Add(MemberCodeNameIndex);
+                    RandomCodeName = TeamCodeNames.CodeNamesList[MemberCodeNameIndex];
+                }
+
                 TeamMember newMember = new TeamMember()
                 {
                     FirstName = MemberFirstName,
                     LastName = MemberLastName,
                     SkillLevel = MemberSkillLevel,
-                    CourageFactor = MemberCourageFactor
+                    CourageFactor = MemberCourageFactor,
+                    CodeName = RandomCodeName
                 };
 
                 TeamMemberList.Add(newMember);
-                Console.WriteLine($"Name: {newMember.FullName()} \nSkill Level: {newMember.SkillLevel} \nCourage Factor: {newMember.CourageFactor}");
+                Console.WriteLine($"Name: {newMember.FullName()} \nSkill Level: {newMember.SkillLevel} \nCourage Factor: {newMember.CourageFactor}\nCode Name: {newMember.CodeName}");
             }
 
-            TeamMember Laurel = new TeamMember()
-            {
-                FirstName = "Laurel",
-                LastName = "Morrison",
-                SkillLevel = 25,
-                CourageFactor = 1.9
-            };
-
-            TeamMember Taryn = new TeamMember()
-            {
-                FirstName = "Taryn",
-                LastName = "Lytle",
-                SkillLevel = 25,
-                CourageFactor = 1.9
-            };
-
-            TeamMember Colten = new TeamMember()
-            {
-                FirstName = "Colten",
-                LastName = "Mayberry",
-                SkillLevel = 25,
-                CourageFactor = 2.0
-            };
-
-            TeamMemberList.Add(Laurel);
-            TeamMemberList.Add(Taryn);
-            TeamMemberList.Add(Colten);
             Console.WriteLine($"There are {TeamMemberList.Count} members on the team! \n");
 
 

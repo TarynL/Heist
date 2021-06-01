@@ -12,11 +12,11 @@ namespace Heist
 
         public double CourageFactor { get; set; }
 
+        public string CodeName { get; set; }
+
         public string FullName()
         {
             return ($"{FirstName} {LastName}");
         }
-
-
     }
 }
