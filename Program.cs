@@ -18,6 +18,7 @@ namespace Heist
                 string MemberFirstName = Console.ReadLine();
                 if (MemberFirstName == "")
                 {
+                    Console.WriteLine("Team is complete!");
                     break;
                 }
                 else
@@ -64,8 +65,19 @@ namespace Heist
 
             foreach (TeamMember member in TeamMemberList)
             {
-                Console.WriteLine(member.FullName());
+                Console.WriteLine("~~~~~~~~~~~");
+                Console.WriteLine($"Name: {member.FullName()}");
+                Console.WriteLine($"Skill Level: {member.SkillLevel}");
+                Console.WriteLine($"Courage Factor: {member.CourageFactor}");
+                Console.WriteLine("~~~~~~~~~~~");
+
+
+
             }
+
+            Console.WriteLine($"There are {TeamMemberList.Count} members on the team!");
+
+
 
         }
     }
