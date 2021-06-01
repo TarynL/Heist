@@ -8,6 +8,8 @@ namespace Heist
         static void Main(string[] args)
         {
             Console.WriteLine("Plan Your Heist!");
+            Music ThemeMusic = new Music();
+            ThemeMusic.Mario();
             bool NameCheck = true;
             int TeamSkillLevel = 0;
             int HeistWins = 0;
