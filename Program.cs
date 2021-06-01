@@ -9,20 +9,13 @@ namespace Heist
         {
             Console.WriteLine("Plan Your Heist!");
             bool NameCheck = true;
-            int BankDifficultyLevel = 100;
             int TeamSkillLevel = 0;
-
-            static int GetHeistLuckValue()
-            {
-                Random random = new Random();
-                return random.Next(-10, 10);
-            }
-            BankDifficultyLevel += GetHeistLuckValue();
 
             List<TeamMember> TeamMemberList = new List<TeamMember>();
 
             while (NameCheck)
             {
+
                 Console.Write("Please enter team members first name: ");
                 string MemberFirstName = Console.ReadLine();
                 if (MemberFirstName == "")
@@ -36,7 +29,7 @@ namespace Heist
                 }
                 Console.Write("Please enter team members last name: ");
                 string MemberLastName = Console.ReadLine();
-                Console.Write("Please enter skill level: ");
+                Console.Write("Please enter skill level between 1-25: ");
                 int MemberSkillLevel = int.Parse(Console.ReadLine());
                 Console.Write("Please enter a courage factor between 0.0-2.0: ");
                 double MemberCourageFactor = double.Parse(Console.ReadLine());
@@ -53,7 +46,6 @@ namespace Heist
                 Console.WriteLine($"Name: {newMember.FullName()} \nSkill Level: {newMember.SkillLevel} \nCourage Factor: {newMember.CourageFactor}");
             }
 
-
             TeamMember Laurel = new TeamMember()
             {
                 FirstName = "Laurel",
@@ -61,6 +53,7 @@ namespace Heist
                 SkillLevel = 25,
                 CourageFactor = 1.9
             };
+
             TeamMember Taryn = new TeamMember()
             {
                 FirstName = "Taryn",
@@ -68,6 +61,7 @@ namespace Heist
                 SkillLevel = 25,
                 CourageFactor = 1.9
             };
+
             TeamMember Colten = new TeamMember()
             {
                 FirstName = "Colten",
@@ -80,34 +74,43 @@ namespace Heist
             TeamMemberList.Add(Taryn);
             TeamMemberList.Add(Colten);
 
-
             foreach (TeamMember member in TeamMemberList)
             {
                 TeamSkillLevel += member.SkillLevel;
             }
 
-            Console.WriteLine($"There are {TeamMemberList.Count} members on the team! \n");
+            Console.WriteLine("How many heists would you like to run?");
+            int TrialRuns = int.Parse(Console.ReadLine());
 
-            Console.WriteLine($"The teams skill level is {TeamSkillLevel}");
-            Console.WriteLine($"The bank difficulty level is {BankDifficultyLevel} \n");
-
-            if (TeamSkillLevel >= BankDifficultyLevel)
+            for (int i = 0; i < TrialRuns; i++)
             {
-                Console.WriteLine("$$$$$$$$");
-                Console.WriteLine("We are rich!");
-                Console.WriteLine("$$$$$$$$");
+                int BankDifficultyLevel = 100;
+
+                static int GetHeistLuckValue()
+                {
+                    Random random = new Random();
+                    return random.Next(-10, 10);
+                }
+
+                BankDifficultyLevel += GetHeistLuckValue();
+
+                Console.WriteLine($"There are {TeamMemberList.Count} members on the team! \n");
+                Console.WriteLine($"The teams skill level is {TeamSkillLevel}");
+                Console.WriteLine($"The bank difficulty level is {BankDifficultyLevel} \n");
+
+                if (TeamSkillLevel >= BankDifficultyLevel)
+                {
+                    Console.WriteLine("$$$$$$$$");
+                    Console.WriteLine("We are rich!");
+                    Console.WriteLine("$$$$$$$$");
+                }
+                else
+                {
+                    Console.WriteLine("~~~0~~~0~~~0~~~0~~~");
+                    Console.WriteLine("We are poor!");
+                    Console.WriteLine("~~~0~~~0~~~0~~~0~~~");
+                }
             }
-            else
-            {
-                Console.WriteLine("~~~0~~~0~~~0~~~0~~~");
-                Console.WriteLine("We are poor!");
-                Console.WriteLine("~~~0~~~0~~~0~~~0~~~");
-            }
-
-
-
-
-
         }
     }
 }
